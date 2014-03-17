@@ -17,6 +17,17 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+
+	/////////////////////////////////////////////////////////
+	bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event) override;
+	void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event* event) override;
+	void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event) override;
+
+
+
+	cocos2d::Sprite* m_ty;
+	cocos2d::EventListenerTouchOneByOne* m_touchListener;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
