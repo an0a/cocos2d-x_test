@@ -10,8 +10,8 @@ Scene* HelloWorld::createScene()
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
 
-    // add layer as a child to scene
-    scene->addChild(layer);
+	if ( layer != NULL )
+		scene->addChild(layer);
 
     // return the scene
     return scene;
@@ -26,7 +26,23 @@ bool HelloWorld::init()
     {
         return false;
     }
+
+	m_ty = NULL;
+
+
+	m_touchListener = EventListenerTouchOneByOne::create();
+	m_touchListener->setSwallowTouches(true);
+
+	m_touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+	m_touchListener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+	m_touchListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     
+	EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
+    
+	dispatcher->addEventListenerWithSceneGraphPriority( m_touchListener, this);
+	
+
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
@@ -36,8 +52,8 @@ bool HelloWorld::init()
 
     // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
+                                           "Resources/CloseNormal.png",
+                                           "Resources/CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
 	closeItem->setPosition(Point(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
@@ -64,13 +80,16 @@ bool HelloWorld::init()
     this->addChild(label, 1);
 
     // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+    m_ty = Sprite::create("Resources/ty01.jpg");
+
+	if ( m_ty == NULL )
+		return false;
 
     // position the sprite on the center of the screen
-    sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    m_ty->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    this->addChild(m_ty, 0);
     
     return true;
 }
@@ -83,4 +102,40 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+
+
+bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
+{
+	Point pos = touch->getLocation();
+
+	Point posInNode = m_ty->convertToNodeSpace( pos );
+	cocos2d::Rect rect = m_ty->getTextureRect();
+
+	if ( !rect.containsPoint( posInNode ))
+		return false;
+
+	/*
+	cocos2d::Rect tmp( pos.x - rect.size.width/2, pos.y - rect.size.height / 2, rect.size.width, rect.size.height );
+
+	cocos2d::Point cursor = touch->getLocation();
+
+	if ( !tmp.containsPoint( cursor ))
+		return false;
+	*/
+
+	m_ty->setScale( 1.2f );
+	onTouchMoved( touch, event );
+	return true;
+}
+
+void HelloWorld::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event* event)
+{
+	m_ty->setPosition( touch->getLocation() );
+}
+
+void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event)
+{
+	m_ty->setScale( 1.0f );
 }
