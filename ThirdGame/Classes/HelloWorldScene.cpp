@@ -3,7 +3,6 @@
 
 
 
-
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -113,6 +112,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #endif
 }
 
+
 bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 {
 	Point posInNode = m_ty->convertToNodeSpace( touch->getLocation());
@@ -125,6 +125,9 @@ bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 	UINT ret = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect( "snd/Good.wav", false );
 
 	onTouchMoved( touch, event );
+
+	log( "abcdefg" );
+
 	return true;
 }
 

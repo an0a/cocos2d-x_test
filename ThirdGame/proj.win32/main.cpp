@@ -2,6 +2,8 @@
 #include "AppDelegate.h"
 #include "cocos2d.h"
 
+
+
 USING_NS_CC;
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
@@ -21,6 +23,9 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			PostMessage( hWnd, WM_QUIT, 0, 0 );
 	}
 
+	// 콘솔 생성.
+	::AllocConsole();
+	SetStdHandle( STD_ERROR_HANDLE, (HANDLE)GetStdHandle(STD_OUTPUT_HANDLE) );
 
     // create the application instance
     AppDelegate app;
