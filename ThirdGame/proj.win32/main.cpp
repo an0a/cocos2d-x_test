@@ -12,6 +12,16 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+
+
+	{
+		HWND hWnd = FindWindow( L"GLFW30", L"My Game" );
+
+		if ( hWnd )
+			PostMessage( hWnd, WM_QUIT, 0, 0 );
+	}
+
+
     // create the application instance
     AppDelegate app;
     return Application::getInstance()->run();

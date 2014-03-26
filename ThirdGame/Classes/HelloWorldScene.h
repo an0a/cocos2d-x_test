@@ -24,7 +24,6 @@ public:
 	void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event) override;
     
     
-    
 	cocos2d::Sprite* m_ty;
 	cocos2d::EventListenerTouchOneByOne* m_touchListener;
 };

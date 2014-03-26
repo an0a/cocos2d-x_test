@@ -1,4 +1,8 @@
 #include "HelloWorldScene.h"
+#include "SimpleAudioEngine.h"
+
+
+
 
 USING_NS_CC;
 
@@ -94,6 +98,8 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(m_ty, 0);
 
+//	SimpleAudioEngine::sharedEngine()->
+
     return true;
 }
 
@@ -109,22 +115,15 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 {
-	CCPoint posInNode = m_ty->convertToNodeSpace( touch->getLocation());
+	Point posInNode = m_ty->convertToNodeSpace( touch->getLocation());
 	cocos2d::Rect rect = m_ty->getTextureRect();
     
 	if ( !rect.containsPoint( posInNode ))
 		return false;
     
-	/*
-     cocos2d::Rect tmp( pos.x - rect.size.width/2, pos.y - rect.size.height / 2, rect.size.width, rect.size.height );
-     
-     cocos2d::Point cursor = touch->getLocation();
-     
-     if ( !tmp.containsPoint( cursor ))
-     return false;
-     */
-    
 	m_ty->setScale( 1.2f );
+	UINT ret = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect( "snd/Good.wav", false );
+
 	onTouchMoved( touch, event );
 	return true;
 }
