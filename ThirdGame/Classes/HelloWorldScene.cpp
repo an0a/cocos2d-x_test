@@ -7,11 +7,16 @@ Scene* HelloWorld::createScene()
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
+    if ( scene == NULL )
+        return NULL;
+    
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
 
-	if ( layer != NULL )
-		scene->addChild(layer);
+    if ( layer == NULL )
+        return scene;
+    // add layer as a child to scene
+    scene->addChild(layer);
 
     // return the scene
     return scene;
@@ -26,13 +31,10 @@ bool HelloWorld::init()
     {
         return false;
     }
-
-	m_ty = NULL;
-
-
-	m_touchListener = EventListenerTouchOneByOne::create();
+    
+    m_touchListener = EventListenerTouchOneByOne::create();
 	m_touchListener->setSwallowTouches(true);
-
+    
 	m_touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	m_touchListener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	m_touchListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
@@ -40,9 +42,8 @@ bool HelloWorld::init()
 	EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
     
 	dispatcher->addEventListenerWithSceneGraphPriority( m_touchListener, this);
-	
 
-
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
@@ -52,13 +53,13 @@ bool HelloWorld::init()
 
     // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
-                                           "Resources/CloseNormal.png",
-                                           "Resources/CloseSelected.png",
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
 	closeItem->setPosition(Point(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
                                 origin.y + closeItem->getContentSize().height/2));
-
+    
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Point::ZERO);
@@ -79,18 +80,20 @@ bool HelloWorld::init()
     // add the label as a child to this layer
     this->addChild(label, 1);
 
-    // add "HelloWorld" splash screen"
-    m_ty = Sprite::create("Resources/ty01.jpg");
-
-	if ( m_ty == NULL )
-		return false;
-
+	 // add "HelloWorld" splash screen"
+    //    auto sprite = Sprite::create("HelloWorld.png");
+	 m_ty = Sprite::create("image/ty01.jpg");
+    
+    if ( m_ty == NULL )
+        return false;
+    
     // position the sprite on the center of the screen
     m_ty->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
+    //	sprite->setPosition( Point( 10, 10 ));
+    
     // add the sprite as a child to this layer
     this->addChild(m_ty, 0);
-    
+
     return true;
 }
 
@@ -104,27 +107,23 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #endif
 }
 
-
-
 bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 {
-	Point pos = touch->getLocation();
-
-	Point posInNode = m_ty->convertToNodeSpace( pos );
+	CCPoint posInNode = m_ty->convertToNodeSpace( touch->getLocation());
 	cocos2d::Rect rect = m_ty->getTextureRect();
-
+    
 	if ( !rect.containsPoint( posInNode ))
 		return false;
-
+    
 	/*
-	cocos2d::Rect tmp( pos.x - rect.size.width/2, pos.y - rect.size.height / 2, rect.size.width, rect.size.height );
-
-	cocos2d::Point cursor = touch->getLocation();
-
-	if ( !tmp.containsPoint( cursor ))
-		return false;
-	*/
-
+     cocos2d::Rect tmp( pos.x - rect.size.width/2, pos.y - rect.size.height / 2, rect.size.width, rect.size.height );
+     
+     cocos2d::Point cursor = touch->getLocation();
+     
+     if ( !tmp.containsPoint( cursor ))
+     return false;
+     */
+    
 	m_ty->setScale( 1.2f );
 	onTouchMoved( touch, event );
 	return true;
@@ -139,3 +138,4 @@ void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event)
 {
 	m_ty->setScale( 1.0f );
 }
+
