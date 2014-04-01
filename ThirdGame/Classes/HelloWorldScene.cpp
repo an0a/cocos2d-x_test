@@ -1,9 +1,15 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 
+#include "cocostudio/CocoStudio.h"
+
 
 
 USING_NS_CC;
+
+using namespace cocostudio;
+
+
 
 Scene* HelloWorld::createScene()
 {
@@ -97,6 +103,67 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(m_ty, 0);
 
+
+	// 여기서 에니메이션 만들어본다.
+
+
+	ArmatureDataManager::getInstance()->addArmatureFileInfo( 
+		"image/SimpleAni/HeroAnimation0.png",
+		"image/SimpleAni/HeroAnimation0.plist",
+		"image/SimpleAni/Hero.ExportJson" );
+	
+	Armature* pAT = Armature::create( "Hero" );
+
+	if ( !pAT ) 
+	{
+		printf( "#   pAT is Null." );
+	}
+	else
+	{
+		pAT->setPosition( 100.0f, 100.0f );
+		pAT->getAnimation()->playByIndex(0 );
+		this->addChild( pAT );
+	}
+
+	/*
+	// 여기서 에니메이션 만들어보자.
+	SpriteFrameCache* pCache = SpriteFrameCache::getInstance();
+	pCache->addSpriteFramesWithFile( "image/HeroAnimation/Export/HeroAnimation0.plist" );
+
+	CCArmature
+
+
+	AnimationCache* pAniCache = AnimationCache::getInstance();
+	pAniCache->addAnimationsWithFile( "image/HeroAnimation/Export/Hero.ExportJson" );
+
+
+	Animation* pAnimation = pAniCache->getAnimation("HeroAnimation0.plist");
+
+	CCAnimation* pAni = CCAnimation::createWithSpriteFrames(  
+
+	if ( pMan )
+	{
+		pMan->setPosition( 10, 10 );
+		this->addChild( pMan, 0 );
+	}
+	*/
+
+
+	
+	
+
+	
+
+		
+	/*
+	CCAnimation* pAni = CCAnimation::create();
+	
+	CCAc
+	pAni->addSpriteFrameWithFileName( "image/HeroAnimation/HeroAnimation.xml.animation" );
+
+	this->addChild( pAni );
+	*/
+
 //	SimpleAudioEngine::sharedEngine()->
 
     return true;
@@ -106,6 +173,7 @@ bool HelloWorld::init()
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
+	cocostudio::ArmatureDataManager::destroyInstance();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
