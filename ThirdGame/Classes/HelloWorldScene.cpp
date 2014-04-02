@@ -1,14 +1,6 @@
+#include "stdafx.h"
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-
-#include "cocostudio/CocoStudio.h"
-
-
-
-USING_NS_CC;
-
-using namespace cocostudio;
-
 
 
 Scene* HelloWorld::createScene()
@@ -125,48 +117,15 @@ bool HelloWorld::init()
 		this->addChild( pAT );
 	}
 
-	/*
-	// 여기서 에니메이션 만들어보자.
-	SpriteFrameCache* pCache = SpriteFrameCache::getInstance();
-	pCache->addSpriteFramesWithFile( "image/HeroAnimation/Export/HeroAnimation0.plist" );
 
-	CCArmature
+	///////////////////////////////////////////////////////////////////////////////////
+	// 여기서 드로우를 추가.
 
+	DrawNode* node = DrawNode::create();
+	this->addChild(node,10);//Make sure your z-order is large enough
 
-	AnimationCache* pAniCache = AnimationCache::getInstance();
-	pAniCache->addAnimationsWithFile( "image/HeroAnimation/Export/Hero.ExportJson" );
-
-
-	Animation* pAnimation = pAniCache->getAnimation("HeroAnimation0.plist");
-
-	CCAnimation* pAni = CCAnimation::createWithSpriteFrames(  
-
-	if ( pMan )
-	{
-		pMan->setPosition( 10, 10 );
-		this->addChild( pMan, 0 );
-	}
-	*/
-
-
-	
-	
-
-	
-
-		
-	/*
-	CCAnimation* pAni = CCAnimation::create();
-	
-	CCAc
-	pAni->addSpriteFrameWithFileName( "image/HeroAnimation/HeroAnimation.xml.animation" );
-
-	this->addChild( pAni );
-	*/
-
-//	SimpleAudioEngine::sharedEngine()->
-
-    return true;
+	node->drawDot( Point( 10.0f, 10.0f ), 10, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ));
+	    return true;
 }
 
 
