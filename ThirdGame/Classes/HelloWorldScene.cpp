@@ -149,7 +149,7 @@ bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 		return false;
     
 	m_ty->setScale( 1.2f );
-	UINT ret = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect( "snd/Good.wav", false );
+	unsigned int ret = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect( "snd/Good.wav", false );
 
 	onTouchMoved( touch, event );
 
