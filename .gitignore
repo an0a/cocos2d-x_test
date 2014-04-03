@@ -12,8 +12,8 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
+
+#  *.a
 
 
 # visual studio files...
@@ -27,4 +27,8 @@
 *.log
 *.pdb
 *.idb
+
+
+# 빌드..
+ThirdGame/proj.win32/Debug.win32
 

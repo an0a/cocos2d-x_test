@@ -164,7 +164,7 @@ bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 
 	onTouchMoved( touch, event );
 
-	log( "abcdefg" );
+	LOGN( "#   클릭 되었음!" );
 
 	return true;
 }

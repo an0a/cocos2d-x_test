@@ -16,7 +16,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 
 	{
-		HWND hWnd = FindWindow( L"GLFW30", L"My Game" );
+		HWND hWnd = FindWindow( "GLFW30", "My Game" );
 
 		if ( hWnd )
 			PostMessage( hWnd, WM_QUIT, 0, 0 );
