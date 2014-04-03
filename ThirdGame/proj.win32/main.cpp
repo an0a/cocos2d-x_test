@@ -2,9 +2,8 @@
 #include "main.h"
 #include "AppDelegate.h"
 
+#include "Log.h"
 
-
-USING_NS_CC;
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
@@ -23,11 +22,13 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			PostMessage( hWnd, WM_QUIT, 0, 0 );
 	}
 
-	// 콘솔 생성.
-	::AllocConsole();
-	SetStdHandle( STD_ERROR_HANDLE, (HANDLE)GetStdHandle(STD_OUTPUT_HANDLE) );
+	LOG::InitAndCreateLogSystem();
 
     // create the application instance
     AppDelegate app;
-    return Application::getInstance()->run();
+    int ret = Application::getInstance()->run();
+
+	LOG::DestroyLogSystem();
+
+	return ret;
 }

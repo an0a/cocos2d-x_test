@@ -10,6 +10,15 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Wrapper">
+      <UniqueIdentifier>{6baf08ec-c710-4ef9-b96e-00e5cf822cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Wrapper\Log">
+      <UniqueIdentifier>{cab6e856-da18-4c9d-b7e4-d6edfaf1af7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Wrapper\쓰래기통">
+      <UniqueIdentifier>{f8fc2275-a084-42d2-876c-82bd88784795}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -22,7 +31,13 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\stdafx.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Log.cpp">
+      <Filter>Classes\Wrapper\Log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +51,19 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\stdafx.h">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TypeDef.h">
+      <Filter>Classes\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Log.h">
+      <Filter>Classes\Wrapper\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VariableArguments.h">
+      <Filter>Classes\Wrapper\쓰래기통</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

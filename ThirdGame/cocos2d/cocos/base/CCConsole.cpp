@@ -799,7 +799,7 @@ bool Console::parseCommand(int fd)
     if(it != _commands.end())
     {
         std::string args2;
-        for(int i = 1; i < args.size(); ++i)
+        for(int i = 1; i < (int)args.size(); ++i)
         {   
             if(i > 1)
             {

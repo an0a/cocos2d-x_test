@@ -113,7 +113,7 @@ bool HelloWorld::init()
 	else
 	{
 		pAT->setPosition( 100.0f, 100.0f );
-		pAT->getAnimation()->playByIndex(0 );
+		pAT->getAnimation()->playWithIndex(0 );
 		this->addChild( pAT );
 	}
 
@@ -124,8 +124,19 @@ bool HelloWorld::init()
 	DrawNode* node = DrawNode::create();
 	this->addChild(node,10);//Make sure your z-order is large enough
 
-	node->drawDot( Point( 10.0f, 10.0f ), 10, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ));
-	    return true;
+	node->drawDot( Point( 300.0f, 300.0f ), 10, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ));
+
+	Point ver[] = {
+		Point( 100.0, 100.0 ),
+		Point( 110.0, 100.0 ),
+		Point( 100, 110.0f ),
+//		Point( 110.0f, 110.0f ),
+//		Point( 100.0f, 100.0f ),
+	};
+
+	node->drawPolygon( ver, sizeof( ver ), Color4F( 1.0f, 1.0f, 1.0f, 1.0f ), 0.0f, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ) );
+
+	return true;
 }
 
 
