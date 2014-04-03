@@ -56,6 +56,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		995BD06418EC89B800536919 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 995BD06218EC89B800536919 /* stdafx.cpp */; };
+		995BD06818EDBF1A00536919 /* snd in Resources */ = {isa = PBXBuildFile; fileRef = 995BD06718EDBF1A00536919 /* snd */; };
 		9978A4B918E1EE5900DDA646 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9978A4B818E1EE5900DDA646 /* CloseNormal.png */; };
 		9978A4BA18E1EE5900DDA646 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9978A4B818E1EE5900DDA646 /* CloseNormal.png */; };
 		9978A4BD18E1EE6A00DDA646 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9978A4BB18E1EE6A00DDA646 /* CloseSelected.png */; };
@@ -259,6 +261,9 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		995BD06218EC89B800536919 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../Classes/stdafx.cpp; sourceTree = "<group>"; };
+		995BD06318EC89B800536919 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ../Classes/stdafx.h; sourceTree = "<group>"; };
+		995BD06718EDBF1A00536919 /* snd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = snd; path = ../Resources/snd; sourceTree = "<group>"; };
 		9978A4B818E1EE5900DDA646 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = ../Resources/CloseNormal.png; sourceTree = "<group>"; };
 		9978A4BB18E1EE6A00DDA646 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = ../Resources/CloseSelected.png; sourceTree = "<group>"; };
 		9978A4BC18E1EE6A00DDA646 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelloWorld.png; path = ../Resources/HelloWorld.png; sourceTree = "<group>"; };
@@ -339,6 +344,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				995BD06218EC89B800536919 /* stdafx.cpp */,
+				995BD06318EC89B800536919 /* stdafx.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -458,6 +465,7 @@
 		9978A4A918E1EE3600DDA646 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				995BD06718EDBF1A00536919 /* snd */,
 				9978A4C318E1F8CC00DDA646 /* image */,
 				9978A4BB18E1EE6A00DDA646 /* CloseSelected.png */,
 				9978A4BC18E1EE6A00DDA646 /* HelloWorld.png */,
@@ -522,7 +530,7 @@
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = 24ZS887959;
 					};
 				};
 			};
@@ -639,6 +647,7 @@
 				9978A4BD18E1EE6A00DDA646 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				995BD06818EDBF1A00536919 /* snd in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -675,6 +684,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				995BD06418EC89B800536919 /* stdafx.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
@@ -751,6 +761,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -771,6 +782,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -782,6 +794,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -800,6 +813,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
