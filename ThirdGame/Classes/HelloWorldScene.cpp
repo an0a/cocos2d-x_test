@@ -39,12 +39,29 @@ bool HelloWorld::init()
 	m_touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	m_touchListener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	m_touchListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-    
+
 	EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
     
 	dispatcher->addEventListenerWithSceneGraphPriority( m_touchListener, this);
 
+
+	//////////////////////////////////////////////////
+
+	/*
+	m_keyboardListener	= EventListenerKeyboard::create();
+	m_keyboardListener
+
+	EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
     
+	dispatcher->addEventListenerWithSceneGraphPriority( m_touchListener, this);
+
+	*/
+
+	setKeyboardEnabled( true );
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
@@ -90,8 +107,9 @@ bool HelloWorld::init()
     
     // position the sprite on the center of the screen
     m_ty->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	
     //	sprite->setPosition( Point( 10, 10 ));
-    
+
     // add the sprite as a child to this layer
     this->addChild(m_ty, 0);
 
@@ -113,7 +131,8 @@ bool HelloWorld::init()
 	else
 	{
 		pAT->setPosition( 100.0f, 100.0f );
-		pAT->getAnimation()->playWithIndex(0 );
+
+		pAT->getAnimation()->playWithIndex( 0 );
 		this->addChild( pAT );
 	}
 
@@ -126,6 +145,9 @@ bool HelloWorld::init()
 
 	node->drawDot( Point( 300.0f, 300.0f ), 10, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ));
 
+
+
+	/*
 	Point ver[] = {
 		Point( 100.0, 100.0 ),
 		Point( 110.0, 100.0 ),
@@ -133,9 +155,9 @@ bool HelloWorld::init()
 //		Point( 110.0f, 110.0f ),
 //		Point( 100.0f, 100.0f ),
 	};
-
+	
 	node->drawPolygon( ver, sizeof( ver ), Color4F( 1.0f, 1.0f, 1.0f, 1.0f ), 0.0f, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ) );
-
+	*/
 	return true;
 }
 
@@ -153,8 +175,13 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 {
+	Point pos = touch->getLocation();
+
 	Point posInNode = m_ty->convertToNodeSpace( touch->getLocation());
 	cocos2d::Rect rect = m_ty->getTextureRect();
+
+	
+	LOGN( " mouse(%f, %f)", pos .x, pos .y  );
     
 	if ( !rect.containsPoint( posInNode ))
 		return false;
@@ -179,3 +206,26 @@ void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event)
 	m_ty->setScale( 1.0f );
 }
 
+
+void HelloWorld::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	LOGN( "!   µé¾î¿È!" );
+}
+
+void HelloWorld::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	LOGN( "!   µé¾î¿È!" );
+}
+
+void HelloWorld::onEnter()
+{
+	Layer::onEnter();
+	LOGN( "¿£ÅÍ!" );
+}
+
+void HelloWorld::onExit()
+{
+	LOGN( "¿¢½ÃÆ®!" );
+
+	Layer::onExit();
+}
