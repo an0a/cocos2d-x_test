@@ -6,6 +6,7 @@
 
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
+#include "SimpleAudioEngine.h"
 
 
 USING_NS_CC;

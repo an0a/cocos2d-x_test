@@ -2,7 +2,6 @@
 
 
 
-
 #ifndef IN
 #	define IN
 #endif
@@ -58,5 +57,10 @@
 
 #endif
 
+#include <assert.h>
+#include "STL.h"
+
 #include "Log.h"
+
+
 

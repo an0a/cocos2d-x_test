@@ -94,8 +94,8 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command>
-      </Command>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</Command>
     </PreLinkEvent>
     <PreBuildEvent>
       <Command>if exist $(TargetPath) (
@@ -150,10 +150,12 @@ move /Y $(TargetPath) $(TargetPath).bak
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Classes\BlockBase.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Classes\Log.cpp" />
+    <ClCompile Include="..\Classes\MapLayer.cpp" />
     <ClCompile Include="..\Classes\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -162,9 +164,12 @@ move /Y $(TargetPath) $(TargetPath).bak
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\BlockBase.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Log.h" />
+    <ClInclude Include="..\Classes\MapLayer.h" />
     <ClInclude Include="..\Classes\stdafx.h" />
+    <ClInclude Include="..\Classes\STL.h" />
     <ClInclude Include="..\Classes\TypeDef.h" />
     <ClInclude Include="..\Classes\VariableArguments.h" />
     <ClInclude Include="Console.h" />
@@ -183,9 +188,6 @@ move /Y $(TargetPath) $(TargetPath).bak
     </ProjectReference>
     <ProjectReference Include="..\cocos2d\cocos\ui\proj.win32\libGUI.vcxproj">
       <Project>{7e06e92c-537a-442b-9e4a-4761c84f8a1a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\cocos2d\external\chipmunk\proj.win32\chipmunk.vcxproj">
-      <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

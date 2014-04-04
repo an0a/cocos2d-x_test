@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "HelloWorldScene.h"
-#include "SimpleAudioEngine.h"
+
+#include "MapLayer.h"
 
 
 Scene* HelloWorld::createScene()
@@ -10,7 +11,7 @@ Scene* HelloWorld::createScene()
     
     if ( scene == NULL )
         return NULL;
-    
+
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
 
@@ -18,6 +19,14 @@ Scene* HelloWorld::createScene()
         return scene;
     // add layer as a child to scene
     scene->addChild(layer);
+
+	auto mapLayer = MapLayer::create();
+
+    if ( mapLayer == NULL )
+        return scene;
+
+	layer->addChild( mapLayer );
+
 
     // return the scene
     return scene;
@@ -32,7 +41,8 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
+
+	/*
     m_touchListener = EventListenerTouchOneByOne::create();
 	m_touchListener->setSwallowTouches(true);
     
@@ -44,7 +54,7 @@ bool HelloWorld::init()
     
 	dispatcher->addEventListenerWithSceneGraphPriority( m_touchListener, this);
 
-
+	*/
 	//////////////////////////////////////////////////
 
 	/*
@@ -57,11 +67,12 @@ bool HelloWorld::init()
 
 	*/
 
-	setKeyboardEnabled( true );
+//	setKeyboardEnabled( true );
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+	
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
@@ -83,6 +94,7 @@ bool HelloWorld::init()
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
 
+	/*
     /////////////////////////////
     // 3. add your codes below...
 
@@ -146,6 +158,8 @@ bool HelloWorld::init()
 	node->drawDot( Point( 300.0f, 300.0f ), 10, Color4F( 1.0f, 1.0f, 1.0f, 1.0f ));
 
 
+	*/
+
 
 	/*
 	Point ver[] = {
@@ -180,7 +194,6 @@ bool HelloWorld::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event)
 	Point posInNode = m_ty->convertToNodeSpace( touch->getLocation());
 	cocos2d::Rect rect = m_ty->getTextureRect();
 
-	
 	LOGN( " mouse(%f, %f)", pos .x, pos .y  );
     
 	if ( !rect.containsPoint( posInNode ))
@@ -206,26 +219,32 @@ void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event)
 	m_ty->setScale( 1.0f );
 }
 
-
+/*
 void HelloWorld::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	LOGN( "!   µé¾î¿È!" );
+//	Layer::onKeyPressed( keyCode, event );
+
+
+	LOGN( "!   µé¾î¿È!  (%d)", keyCode );
 }
 
 void HelloWorld::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	LOGN( "!   µé¾î¿È!" );
+	Console* pConsole = Director::getInstance()->getConsole();
+
 }
+*/
 
 void HelloWorld::onEnter()
 {
 	Layer::onEnter();
-	LOGN( "¿£ÅÍ!" );
+
+	Director::getInstance()->setProjection( Director::Projection::_2D );
+
+	//Projection* pPro = Director::getInstance()->getProjection();
 }
 
 void HelloWorld::onExit()
 {
-	LOGN( "¿¢½ÃÆ®!" );
-
 	Layer::onExit();
 }

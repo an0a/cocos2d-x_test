@@ -21,15 +21,15 @@ class HelloWorld : public cocos2d::Layer
 		void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event* event) override;
 		void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* event) override;
 
-	    void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) override;
-		void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event) override;
+//	    void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) override;
+//		void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event) override;
 
 		void onEnter() override;
 		void onExit() override;
 		
 		cocos2d::Sprite* m_ty;
 		cocos2d::EventListenerTouchOneByOne* m_touchListener;
-		cocos2d::EventListenerKeyboard*	m_keyboardListener;
+//		cocos2d::EventListenerKeyboard*	m_keyboardListener;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
